@@ -1,5 +1,5 @@
 <Alloy>
-	<Window class="container" id ="win">
+	<Window class="container">
 		<Button id="buttonFoto" onClick="capturaFoto" title="Captura de Foto"/>
 		<Button id="buttonVideo" onClick="capturaVideo" title="Captura de Video"/>
  </Window>

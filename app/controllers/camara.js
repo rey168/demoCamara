@@ -1,6 +1,24 @@
 // Arguments passed into this controller can be accessed via the `$.args` object directly or:
 var args = $.args;
 //var loginCorrecto = Ti.App.Properties.getBool("loginCorrecto");
+var imageViewImagen = Ti.UI.createImageView({
+    width: "200",
+    height: "200",
+    backgroundColor: "blue",
+    top: "10"
+});
+$.camara.add(imageViewImagen);
+
+
+var movie = Titanium.Media.createVideoPlayer({
+    movieControlStyle: Titanium.Media.VIDEO_CONTROL_EMBEDDED,
+    width: "200",
+    height: "200",
+    top: "180",
+    backgroundColor: "#000",
+    autoplay: false
+});
+$.camara.add(movie);
 
 function camaraFoto() {
     Titanium.Media.showCamera({
@@ -10,15 +28,7 @@ function camaraFoto() {
         autohide: false, //Important!
 
         success: function(event) {
-
-            var imageViewImagen = Ti.UI.createImageView({
-                width: "200",
-                height: "200",
-                backgroundColor: "blue",
-                top: "10",
-                image: event.media
-            });
-            $.win.add(imageViewImagen);
+          imageViewImagen.image = event.media;
 
         },
 
@@ -33,15 +43,7 @@ function camaraVideo() {
         allowEditing: false,
         saveToPhotoGallery: true,
         success: function(event) {
-            var movie = Titanium.Media.createVideoPlayer({
-                movieControlStyle: Titanium.Media.VIDEO_CONTROL_EMBEDDED,
-                width: "200",
-                height: "200",
-                top: "180",
-                backgroundColor: "#000",
-                autoplay: false
-            });
-            $.win.add(movie);
+
             movie.url = event.media.nativePath;
         },
         cancel: function(event) {

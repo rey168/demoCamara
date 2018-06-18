@@ -6,7 +6,7 @@ function entrar() {
         alert('Usuario y Contraseña son obligatorios.');
         return;
     }else {
-    	Ti.App.Properties.setBool("loginCorrecto", true);
+    	//Ti.App.Properties.setBool("loginCorrecto", true);
 			Alloy.createController('camara').getView().open();
     }
 

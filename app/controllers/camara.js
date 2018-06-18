@@ -1,6 +1,8 @@
 // Arguments passed into this controller can be accessed via the `$.args` object directly or:
 var args = $.args;
-var loginCorrecto = Ti.App.Properties.getBool("loginCorrecto");
+var controlller = "camara.js";
+Ti.App.Properties.setString('viewSave', controlller);
+//var loginCorrecto = Ti.App.Properties.getBool("loginCorrecto");
 
 function camaraFoto() {
     Titanium.Media.showCamera({
@@ -78,6 +80,7 @@ function capturaFoto(e) {
         camaraFoto();
     }
 }
+//viewProperties();
 
 function capturaVideo(e) {
 
@@ -97,3 +100,16 @@ function capturaVideo(e) {
         camaraVideo();
     }
 }
+
+function viewProperties() {
+    var viewSave = Ti.App.Properties.getString('viewSave');
+    switch (viewSave) {
+        case 'camara.js':
+            Alloy.createController('camara').getView().open();
+            break;
+
+        default:
+            Alloy.createController('index').getView().open();
+    }
+
+};

@@ -1,0 +1,17 @@
+<Alloy>
+   <Window class="container">
+      <View id="contenedorGeneral">
+         <Label id="usuarioLabel" class="loginLabel" text="Usuario:"></Label>
+         <View class="contenedorElemtos">
+            <TextField id="usuarioField"  class="loginField" value=""/>
+         </View>
+         <Label id="contraseñaLabel" class="loginLabel" text="Contraseña:"></Label>
+         <View class="contenedorElemtos">
+            <TextField id="contraseñaField" class="loginField" value="" />
+         </View>
+         <View id="contenedorEntrar">
+            <Button id="botonEntrar" class="logEntrarButton"  onClick="entrar" title="Entrar"></Button>
+         </View>
+      </View>
+   </Window>
+</Alloy>

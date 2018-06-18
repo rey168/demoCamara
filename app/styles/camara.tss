@@ -1,0 +1,12 @@
+
+".container" : {
+
+}
+
+'#buttonFoto': {
+  bottom: "60"
+}
+
+'#buttonVideo': {
+  bottom: "10"
+}

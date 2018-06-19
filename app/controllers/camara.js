@@ -1,7 +1,8 @@
 // Arguments passed into this controller can be accessed via the `$.args` object directly or:
 var args = $.args;
-//var loginCorrecto = Ti.App.Properties.getBool("loginCorrecto");
+var f = Ti.Filesystem.getFile(Ti.Filesystem.applicationDataDirectory,Ti.App.Properties.getString("user_picture_name") );
 var imageViewImagen = Ti.UI.createImageView({
+    image:f.read(),
     width: "200",
     height: "200",
     backgroundColor: "blue",
@@ -28,7 +29,15 @@ function camaraFoto() {
         autohide: false, //Important!
 
         success: function(event) {
-          imageViewImagen.image = event.media;
+          image = event.media;
+
+
+// Create the file in the application directory
+var picture = Ti.Filesystem.getFile(Ti.Filesystem.applicationDataDirectory, res.profil_picture);
+
+// Write the image to the new file (image created from camera)
+picture.write(image);
+Ti.App.Properties.setString("user_picture_name", res.profil_picture);
 
         },
 

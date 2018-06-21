@@ -127,7 +127,7 @@ buscarImagen();
 
 function buscarImagen() {
 
-    if (Titanium.Network.networkType == Titanium.Network.NETWORK_NONE) {
+    if (!Titanium.Network.online) {
 
         alert('No tienes conexion a internet');
     } else {

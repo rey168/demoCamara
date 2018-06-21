@@ -104,4 +104,8 @@ function capturaVideo(e) {
         camaraVideo();
     }
 }
+$.camara.addEventListener('android:back', function(){
+    
+});
+
 //$.camara.open();

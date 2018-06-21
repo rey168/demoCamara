@@ -1,0 +1,13 @@
+<Alloy>
+	<Window class="container">
+		<View id="contenedorGeneral">
+			<Label id="emailLabel" class="emailclassLabel"></Label>
+			<View class="contenedorElemtos">
+				 <TextField id="emailField" class="emailclassField"/>
+			</View>
+			<View id="contenedorRecuperar">
+				 <Button id="recuperarBoton" class="clasButtonRecuperar"  onClick="restablecer"></Button>
+			</View>
+		</View>
+	</Window>
+</Alloy>

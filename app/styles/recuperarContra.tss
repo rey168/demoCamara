@@ -1,0 +1,88 @@
+
+".container" : {
+  backgroundColor:"white"
+}
+
+'#contenedorGeneral': {
+  layout:"vertical",
+  left:"20dp",
+  right:"20dp",
+  top:"0dp",
+  height : Ti.UI.SIZE,
+}
+
+'#emailLabel': {
+  top:"0dp",
+  text: "Email:",
+	font:{
+		fontSize:"13sp"
+	}
+}
+
+'.emailclassLabel': {
+  width:Ti.UI.SIZE,
+	height:"35dp",
+	left:0,
+	color:"black",
+	font:{
+		fontSize:"12sp"
+	},
+}
+
+'#emailField': {
+  top:"0dp",
+  passwordMask:true,
+	font:{
+		fontSize:"13sp"
+	}
+}
+
+'.emailclassField': {
+  width:"90%",
+	height:"35dp",
+	backgroundColor:"#FFF",
+	width:"100%",
+	color:"black",
+	font:{
+		fontSize:"12sp",
+	},
+}
+
+'#contenedorRecuperar': {
+  top:"250dp",
+	layout:"vertical",
+	width:"100%",
+	height:Ti.UI.SIZE,
+}
+
+'#recuperarBoton': {
+  left:"0",
+	borderRadius:"2dp",
+	font:{
+		fontSize:"16.5sp",
+		fontFamily:"Roboto-Regular"
+	}
+}
+
+'.clasButtonRecuperar': {
+  backgroundColor:"blue",
+	width:"100%",
+  title: "Restablecer Contraseña",
+	height:"30dp",
+	color:"#FFF",
+	font:{
+		fontSize:"12sp",
+	},
+	style:{
+		borderRadius:"2"
+	},
+}
+
+'.contenedorElemtos': {
+  top:"-5dp",
+	left:"0dp",
+	height:"30dp",
+	width:Ti.UI.FILL,
+	backgroundColor:"black",
+	borderRadius:"2dp"
+}

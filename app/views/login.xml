@@ -12,6 +12,12 @@
          <View id="contenedorEntrar">
             <Button id="botonEntrar" class="logEntrarButton"  onClick="entrar" title="Entrar"></Button>
          </View>
+         <View id="contenedorCrear">
+            <Button id="botonEntrar" class="logEntrarButton"  onClick="crear" title="Crear Usuario"></Button>
+         </View>
+         <View id="contenedorRecuperar">
+            <Button id="botonRecuperar" class="logEntrarButton"  onClick="recuperar" title="Recuperar Contraseña"></Button>
+         </View>
       </View>
    </Window>
 </Alloy>

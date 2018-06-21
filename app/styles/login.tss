@@ -26,7 +26,7 @@
 	width:Ti.UI.SIZE,
 	height:"35dp",
 	left:0,
-	color:"red",
+	color:"black",
 	font:{
 		fontSize:"12sp"
 	},
@@ -65,7 +65,7 @@
 	height:"35dp",
 	backgroundColor:"#FFF",
 	width:"100%",
-	color:"green",
+	color:"black",
 	font:{
 		fontSize:"12sp",
 	},
@@ -116,4 +116,27 @@
 	layout:"vertical",
 	width:"100%",
 	height:Ti.UI.SIZE,
+}
+
+'#contenedorCrear': {
+	top:"10dp",
+	layout:"vertical",
+	width:"100%",
+	height:Ti.UI.SIZE,
+}
+
+'#contenedorRecuperar': {
+	top:"250dp",
+	layout:"vertical",
+	width:"100%",
+	height:Ti.UI.SIZE,
+}
+
+'#botonRecuperar': {
+	left:"0",
+	borderRadius:"2dp",
+	font:{
+		fontSize:"16.5sp",
+		fontFamily:"Roboto-Regular"
+	}
 }

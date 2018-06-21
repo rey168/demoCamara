@@ -1,0 +1,147 @@
+
+".container" : {
+  backgroundColor:"white"
+}
+
+"#contenedorGeneral" : {
+  layout:"vertical",
+  left:"20dp",
+  right:"20dp",
+  top:"0dp",
+  height : Ti.UI.SIZE,
+}
+
+"#usuarioLabel" : {
+	top:"25dp",
+  text: "Email:",
+	font:{
+		fontSize:"13sp"
+	}
+}
+
+".loginLabel":{
+	width:Ti.UI.SIZE,
+	height:"35dp",
+	left:0,
+	color:"black",
+	font:{
+		fontSize:"12sp"
+	},
+},
+
+".contenedorElemtos" : {
+	top:"-5dp",
+	left:"0dp",
+	height:"30dp",
+	width:Ti.UI.FILL,
+	backgroundColor:"black",
+	borderRadius:"2dp"
+}
+
+".loginField":{
+
+	width:"90%",
+	height:"35dp",
+	backgroundColor:"#FFF",
+	width:"100%",
+	color:"black",
+	font:{
+		fontSize:"12sp",
+	},
+},
+
+"#nombreLabel" : {
+	top:"5dp",
+  text: "Nombre:",
+	font:{
+		fontSize:"13sp"
+	}
+}
+
+"#nombreField" : {
+	height:"130%",
+	width:Ti.UI.FILL,
+	font:{
+		fontSize:"16.5sp",
+		fontFamily:"Roboto-Regular"
+	}
+}
+
+'#apellidoLabel': {
+  top:"0dp",
+  text: "Apellido:",
+	font:{
+		fontSize:"13sp"
+	}
+}
+
+'#apellidoField': {
+  height:"130%",
+	width:Ti.UI.FILL,
+	font:{
+		fontSize:"16.5sp",
+		fontFamily:"Roboto-Regular"
+	}
+}
+
+'#passwordLabel': {
+  top:"0dp",
+  text: "Contraseña:",
+	font:{
+		fontSize:"13sp"
+	}
+}
+
+'#passwordField': {
+  top:"0dp",
+  passwordMask:true,
+	font:{
+		fontSize:"13sp"
+	}
+}
+
+'#confirPasswordLabel': {
+  top:"0dp",
+  text: "Confirmar Contraseña:",
+	font:{
+		fontSize:"13sp"
+	}
+}
+
+'#confirPasswordField': {
+  top:"0dp",
+  passwordMask:true,
+	font:{
+		fontSize:"13sp"
+	}
+}
+
+'#crearUsuarioBoton': {
+  left:"0",
+	borderRadius:"2dp",
+	font:{
+		fontSize:"16.5sp",
+		fontFamily:"Roboto-Regular"
+	}
+}
+
+'.clasButtonCrear': {
+  backgroundColor:"blue",
+	width:"100%",
+  title: "Crear Usuario",
+	height:"30dp",
+	color:"#FFF",
+	font:{
+		fontSize:"12sp",
+	},
+	style:{
+		borderRadius:"2"
+	},
+}
+
+'#contenedorCrear': {
+  top:"10dp",
+	layout:"vertical",
+	width:"100%",
+	height:Ti.UI.SIZE,
+}

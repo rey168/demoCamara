@@ -1,0 +1,29 @@
+<Alloy>
+		<Window class="container">
+			<View id="contenedorGeneral">
+				<Label id="usuarioLabel" class="loginLabel"></Label>
+				<View class="contenedorElemtos">
+					 <TextField id="usuarioField"  class="loginField"/>
+				</View>
+				<Label id="nombreLabel" class="loginLabel"></Label>
+				<View class="contenedorElemtos">
+					 <TextField id="nombreField" class="loginField"/>
+				</View>
+				<Label id="apellidoLabel" class="loginLabel"></Label>
+				<View class="contenedorElemtos">
+					 <TextField id="apellidoField" class="loginField"/>
+				</View>
+				<Label id="passwordLabel" class="loginLabel"></Label>
+				<View class="contenedorElemtos">
+					 <TextField id="passwordField" class="loginField"/>
+				</View>
+				<Label id="confirPasswordLabel" class="loginLabel"></Label>
+				<View class="contenedorElemtos">
+					 <TextField id="confirPasswordField" class="loginField"/>
+				</View>
+				<View id="contenedorCrear">
+					 <Button id="crearUsuarioBoton" class="clasButtonCrear"  onClick="crear"></Button>
+				</View>
+			</View>
+		</Window>
+</Alloy>

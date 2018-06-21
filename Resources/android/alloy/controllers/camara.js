@@ -59,7 +59,7 @@ function Controller() {
   var Cloud = require('ti.cloud');
   var image = Ti.Filesystem.getFile(Ti.Filesystem.applicationDataDirectory, 'imagen.jpg');
   var imageViewImagen = Ti.UI.createImageView({
-    image: image.read(),
+    image: buscarImagen(),
     width: "200",
     height: "200",
     backgroundColor: "blue",
@@ -100,6 +100,7 @@ function Controller() {
           } else {
             alert('Error:\n' + (e.error && e.message || JSON.stringify(e)));
           }
+          buscarImagen();
         });
       } });
 
@@ -139,6 +140,7 @@ function Controller() {
         if (e.success) {
           camaraFoto();
 
+
         } else {
           Ti.API.error('No se pueden obtener permisos de la camara.');
         }
@@ -169,14 +171,23 @@ function Controller() {
     }
   }
   $.camara.addEventListener('android:back', function () {});
-  buscarImagen();
+
   function buscarImagen() {
 
-    if (Titanium.Network.networkType == Titanium.Network.NETWORK_NONE) {
-
+    if (!Titanium.Network.online) {
+      imageViewImagen.image = image.read();
       alert('No tienes conexion a internet');
     } else {
-      alert('tienes conexion a internet.');
+      Cloud.Photos.show({
+        photo_id: "5b2e8bf625c1b02190e355e" },
+      function (e) {
+        if (e.success) {
+          var photo = e.photos[0];
+          alert('Success:\n' + 'id: ' + photo.id + '\n' + 'filename: ' + photo.filename + '\n' + 'updated_at: ' + photo.updated_at);
+        } else {
+          alert('Error:\n' + (e.error && e.message || JSON.stringify(e)));
+        }
+      });
     }
   }
 

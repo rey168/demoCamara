@@ -55,11 +55,11 @@ function Controller() {
   _.extend($, $.__views);
 
 
-
   var args = $.args;
-  var imageSave = Ti.Filesystem.getFile(Ti.Filesystem.applicationDataDirectory, 'imagen.jpg');
+  var Cloud = require('ti.cloud');
+  var image = Ti.Filesystem.getFile(Ti.Filesystem.applicationDataDirectory, 'imagen.jpg');
   var imageViewImagen = Ti.UI.createImageView({
-    image: imageSave.read(),
+    image: image.read(),
     width: "200",
     height: "200",
     backgroundColor: "blue",
@@ -90,6 +90,17 @@ function Controller() {
 
         var imageSave = Ti.Filesystem.getFile(Ti.Filesystem.applicationDataDirectory, 'imagen.jpg');
         imageSave.write(imageViewImagen.image);
+
+        Cloud.Photos.create({
+          photo: imageSave },
+        function (e) {
+          if (e.success) {
+            var photo = e.photos[0];
+            alert('Success:\n' + 'id: ' + photo.id + '\n' + 'filename: ' + photo.filename + '\n' + 'size: ' + photo.size, 'updated_at: ' + photo.updated_at);
+          } else {
+            alert('Error:\n' + (e.error && e.message || JSON.stringify(e)));
+          }
+        });
       } });
 
 
@@ -158,6 +169,16 @@ function Controller() {
     }
   }
   $.camara.addEventListener('android:back', function () {});
+  buscarImagen();
+  function buscarImagen() {
+
+    if (Titanium.Network.networkType == Titanium.Network.NETWORK_NONE) {
+
+      alert('No tienes conexion a internet');
+    } else {
+      alert('tienes conexion a internet.');
+    }
+  }
 
 
 

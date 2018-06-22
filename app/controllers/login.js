@@ -9,9 +9,9 @@ function entrar() {
             password: $.contraseñaField.value
         }, function(e) {
             if (e.success) {
-
                 Ti.App.Properties.setBool("loginCorrecto", false);
                 Alloy.createController('camara').getView().open();
+                $.login.close();
             } else {
                 alert('Error:\n' +
                     ((e.error && e.message) || JSON.stringify(e)));
@@ -28,15 +28,5 @@ function crear() {
 
 function recuperar() {
   Alloy.createController('recuperarContra').getView().open();
-  /*Cloud.Users.requestResetPassword({
-  email: 'gamersneza@hotmail.com'
-}, function (e) {
-  if (e.success) {
-      alert('Success: Reset Request Sent');
-  } else {
-      alert('Error:\n' +
-          ((e.error && e.message) || JSON.stringify(e)));
-  }
-});*/
 }
 $.login.open();

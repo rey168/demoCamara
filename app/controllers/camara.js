@@ -1,8 +1,7 @@
 var args = $.args;
 var Cloud = require('ti.cloud');
-var image = Ti.Filesystem.getFile(Ti.Filesystem.applicationDataDirectory, 'imagen.jpg');
+var image1 = Ti.Filesystem.getFile(Ti.Filesystem.applicationDataDirectory, 'imagen.jpg');
 var imageViewImagen = Ti.UI.createImageView({
-    image: buscarImagen(),
     width: "200",
     height: "200",
     backgroundColor: "blue",
@@ -40,6 +39,7 @@ function camaraFoto() {
             }, function(e) {
                 if (e.success) {
                     var photo = e.photos[0];
+                    Ti.App.Properties.setString('photoID', photo.id);
                     alert('Success:\n' +
                         'id: ' + photo.id + '\n' +
                         'filename: ' + photo.filename + '\n' +
@@ -49,7 +49,6 @@ function camaraFoto() {
                     alert('Error:\n' +
                         ((e.error && e.message) || JSON.stringify(e)));
                 }
-                buscarImagen();
             });
 
         },
@@ -122,30 +121,26 @@ function capturaVideo(e) {
         camaraVideo();
     }
 }
-$.camara.addEventListener('android:back', function() {
-
-});
+buscarImagen()
 
 function buscarImagen() {
+    var photoID = Ti.App.Properties.getString('photoID');
 
     if (!Titanium.Network.online) {
-        imageViewImagen.image = image.read();
+        imageViewImagen.image = image1.read();
         alert('No tienes conexion a internet');
     } else {
         Cloud.Photos.show({
-            photo_id: "5b2be8bf625c1b02190e355e"
+            photo_id: photoID
         }, function(e) {
             if (e.success) {
-                var photo = e.photos[0];
-                alert('Success:\n' +
-                    'id: ' + photo.id + '\n' +
-                    'filename: ' + photo.filename + '\n' +
-                    'updated_at: ' + photo.updated_at);
+                    var photo = e.photos[0];
+                    imageViewImagen.image = photo.urls.original;
+                    alert('Imagen descargada desde el servidor.');
             } else {
                 alert('Error:\n' +
                     ((e.error && e.message) || JSON.stringify(e)));
             }
         });
-
     }
 }

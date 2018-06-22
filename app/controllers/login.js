@@ -1,8 +1,8 @@
 var Cloud = require('ti.cloud');
-var loader = Alloy.Globals.cargarLoader;
+var loader = Alloy.Globals.cargarLoader();
 
 function entrar() {
-  loader.open();
+    loader.show();
     if ($.usuarioField.value == "" || $.contraseñaField.value == "") {
         alert('Usuario y Contraseña son obligatorios.');
     } else {
@@ -11,12 +11,12 @@ function entrar() {
             password: $.contraseñaField.value
         }, function(e) {
             if (e.success) {
-              loader.close();
+              loader.hide();
                 Ti.App.Properties.setBool("loginCorrecto", false);
                 Alloy.createController('camara').getView().open();
                 $.login.close();
             } else {
-              loader.close();
+              loader.hide();
                 alert('Error:\n' +
                     ((e.error && e.message) || JSON.stringify(e)));
             }

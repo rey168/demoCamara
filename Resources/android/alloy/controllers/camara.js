@@ -57,7 +57,8 @@ function Controller() {
   var args = $.args;
   var Cloud = require('ti.cloud');
   var image1 = Ti.Filesystem.getFile(Ti.Filesystem.applicationDataDirectory, 'imagen.jpg');
-  var loader = Alloy.Globals.cargarLoader;
+  var loader = Alloy.Globals.cargarLoader();
+
   var imageViewImagen = Ti.UI.createImageView({
     width: "200",
     height: "200",
@@ -86,7 +87,7 @@ function Controller() {
       autohide: false,
 
       success: function (event) {
-        loader.open();
+        loader.show();
         imageViewImagen.image = event.media;
 
         var imageSave = Ti.Filesystem.getFile(Ti.Filesystem.applicationDataDirectory, 'imagen.jpg');
@@ -98,10 +99,10 @@ function Controller() {
           if (e.success) {
             var photo = e.photos[0];
             Ti.App.Properties.setString('photoID', photo.id);
-            loader.close();
+            loader.hide();
             alert("Imagen se subió correctamente al servidor.");
           } else {
-            loader.close();
+            loader.hide();
             alert('Error:\n' + (e.error && e.message || JSON.stringify(e)));
           }
         });
@@ -176,10 +177,10 @@ function Controller() {
 
   function buscarImagen() {
     var photoID = Ti.App.Properties.getString('photoID');
-    loader.open();
+    loader.show();
     if (!Titanium.Network.online) {
       imageViewImagen.image = image1.read();
-      loader.close();
+      activityIndicator.hide();
       alert('No tienes conexion a internet');
       Ti.API.info("No tienes conexion a internet");
     } else {
@@ -190,10 +191,10 @@ function Controller() {
         if (e.success) {
           var photo = e.photos[0];
           imageViewImagen.image = photo.urls.original;
-          loader.close();
+          loader.hide();
           alert('Imagen descargada desde el servidor.');
         } else {
-          loader.close();
+          loader.hide();
           alert('Error:\n' + (e.error && e.message || JSON.stringify(e)));
         }
       });

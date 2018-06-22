@@ -13,9 +13,28 @@
 // ACS for your application and then fire an event (see below)
 // when connected or errored. if you do not use ACS in your
 // application as a client, you should remove this block
-Alloy.Globals.cargarLoader =  function(
-    
-    var winLoading = Ti.UI.createWindow({
+Alloy.Globals.cargarLoader = function() {
+    var win2 = Ti.UI.createWindow({
+        backgroundColor: 'yellow',
+        fullscreen: true
+    });
+
+    var activityIndicator = Ti.UI.createActivityIndicator({
+        color: 'green',
+        font: {
+            fontFamily: 'Helvetica Neue',
+            fontSize: 26,
+            fontWeight: 'bold'
+        },
+        message: 'Loading...',
+        style: Ti.UI.ActivityIndicatorStyle.DARK,
+        top: 10,
+        left: 10,
+        height: Ti.UI.SIZE,
+        width: Ti.UI.SIZE
+    });
+
+    /*var winLoading = Ti.UI.createWindow({
         opacity: .3,
         backgroundColor: '#fff'
     });
@@ -32,12 +51,13 @@ Alloy.Globals.cargarLoader =  function(
         },
         textAlign: 'center',
         color: '#837770'
-    });
+    });*/
 
-    winLoading.add(labelLoding);
+    win2.add(activityIndicator);
 
-    return winLoading();
-}
+    return activityIndicator;
+
+};
 
 
 

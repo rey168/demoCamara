@@ -9,7 +9,6 @@ function __processArg(obj, key) {
   var arg = null;
   if (obj) {
     arg = obj[key] || null;
-    delete obj[key];
   }
   return arg;
 }
@@ -58,6 +57,7 @@ function Controller() {
   var args = $.args;
   var Cloud = require('ti.cloud');
   var image1 = Ti.Filesystem.getFile(Ti.Filesystem.applicationDataDirectory, 'imagen.jpg');
+  var loader = Alloy.Globals.cargarLoader;
   var imageViewImagen = Ti.UI.createImageView({
     width: "200",
     height: "200",
@@ -75,6 +75,7 @@ function Controller() {
     backgroundColor: "#000",
     autoplay: false });
 
+
   $.camara.add(movie);
 
   function camaraFoto() {
@@ -85,6 +86,7 @@ function Controller() {
       autohide: false,
 
       success: function (event) {
+        loader.open();
         imageViewImagen.image = event.media;
 
         var imageSave = Ti.Filesystem.getFile(Ti.Filesystem.applicationDataDirectory, 'imagen.jpg');
@@ -96,8 +98,10 @@ function Controller() {
           if (e.success) {
             var photo = e.photos[0];
             Ti.App.Properties.setString('photoID', photo.id);
-            alert('Success:\n' + 'id: ' + photo.id + '\n' + 'filename: ' + photo.filename + '\n' + 'size: ' + photo.size, 'updated_at: ' + photo.updated_at);
+            loader.close();
+            alert("Imagen se subió correctamente al servidor.");
           } else {
+            loader.close();
             alert('Error:\n' + (e.error && e.message || JSON.stringify(e)));
           }
         });
@@ -113,7 +117,6 @@ function Controller() {
       allowEditing: false,
       saveToPhotoGallery: true,
       success: function (event) {
-
         movie.url = event.media.nativePath;
       },
       cancel: function (event) {
@@ -173,19 +176,24 @@ function Controller() {
 
   function buscarImagen() {
     var photoID = Ti.App.Properties.getString('photoID');
-
+    loader.open();
     if (!Titanium.Network.online) {
       imageViewImagen.image = image1.read();
+      loader.close();
       alert('No tienes conexion a internet');
+      Ti.API.info("No tienes conexion a internet");
     } else {
+
       Cloud.Photos.show({
         photo_id: photoID },
       function (e) {
         if (e.success) {
           var photo = e.photos[0];
           imageViewImagen.image = photo.urls.original;
+          loader.close();
           alert('Imagen descargada desde el servidor.');
         } else {
+          loader.close();
           alert('Error:\n' + (e.error && e.message || JSON.stringify(e)));
         }
       });

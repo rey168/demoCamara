@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ti:app
+<ti:app 
   xmlns:ti="http://ti.appcelerator.org">
   <id>com.rey.demoCamara</id>
   <name>demoCamara</name>
@@ -12,7 +12,7 @@
   <fullscreen>false</fullscreen>
   <navbar-hidden>false</navbar-hidden>
   <analytics>true</analytics>
-  <guid>edc20b65-ad11-49c0-9999-fce210e800ff</guid>
+  <guid>fb9fbe31-be34-4e15-9666-ccf1508df5dd</guid>
   <property name="ti.ui.defaultunit" type="string">dp</property>
   <property name="run-on-main-thread" type="bool">true</property>
   <ios>
@@ -42,13 +42,13 @@
       </dict>
     </plist>
   </ios>
-  <android
+  <android 
     xmlns:android="http://schemas.android.com/apk/res/android">
     <manifest>
       <uses-permission android:name="android.permission.CAMERA"/>
       <uses-feature android:name="android.hardware.camera"/>
       <uses-permission android:name="android.permission.RECORD_AUDIO"/>
-      <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+      <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
     </manifest>
   </android>
   <modules>
@@ -65,7 +65,7 @@
   <plugins>
     <plugin version="1.0">ti.alloy</plugin>
   </plugins>
-  <property name="appc-app-id" type="string">5b27d18d26a3ce13d24e1515</property>
+  <property name="appc-app-id" type="string">5b2d1fe526a3ce13d24e6663</property>
   <property name="acs-authbase-url-development" type="string">https://secure-identity.cloud.appcelerator.com</property>
   <property name="acs-base-url-development" type="string">https://api.cloud.appcelerator.com</property>
   <property name="acs-oauth-secret-development" type="string">EuJhYDG6fODAVzWV14YB8tTG7Zi0mOA7</property>

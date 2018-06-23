@@ -22,51 +22,31 @@ Backbone = Alloy.Backbone;
 
 
 
-Alloy.Globals.cargarLoader = function () {
-    var win2 = Ti.UI.createWindow({
-        backgroundColor: 'yellow',
-        fullscreen: true });
 
-
-    var activityIndicator = Ti.UI.createActivityIndicator({
-        color: 'green',
-        font: {
-            fontFamily: 'Helvetica Neue',
-            fontSize: 26,
-            fontWeight: 'bold' },
-
-        message: 'Loading...',
-        style: Ti.UI.ActivityIndicatorStyle.DARK,
-        top: 10,
-        left: 10,
-        height: Ti.UI.SIZE,
-        width: Ti.UI.SIZE });
+Alloy.Globals.cargarLoader = Ti.UI.createWindow({
+    opacity: .3,
+    backgroundColor: '#fff' });
 
 
 
+Alloy.Globals.cargarLoader.add(
+Ti.UI.createActivityIndicator({
+    color: 'green',
+    font: {
+        fontFamily: 'Helvetica Neue',
+        fontSize: 26,
+        fontWeight: 'bold' },
+
+    message: 'Loading...',
+    style: Ti.UI.ActivityIndicatorStyle.DARK,
+    top: 10,
+    left: 10,
+    height: Ti.UI.SIZE,
+    width: Ti.UI.SIZE }).
+show());
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    win2.add(activityIndicator);
-
-    return activityIndicator;
-
-};
 
 
 

@@ -1,7 +1,7 @@
 var args = $.args;
 var Cloud = require('ti.cloud');
 var image1 = Ti.Filesystem.getFile(Ti.Filesystem.applicationDataDirectory, 'imagen.jpg');
-var loader = Alloy.Globals.cargarLoader();
+var loader = Alloy.Globals.cargarLoader;
 
 var imageViewImagen = Ti.UI.createImageView({
     width: "200",
@@ -32,7 +32,7 @@ function camaraFoto() {
         autohide: false, //Important!
 
         success: function(event) {
-          loader.show();
+          loader.open();
             imageViewImagen.image = event.media;
             // Create the file in the application directory
             var imageSave = Ti.Filesystem.getFile(Ti.Filesystem.applicationDataDirectory, 'imagen.jpg');
@@ -44,10 +44,10 @@ function camaraFoto() {
                 if (e.success) {
                     var photo = e.photos[0];
                     Ti.App.Properties.setString('photoID', photo.id);
-                    loader.hide();
+                    loader.close();
                     alert("Imagen se subió correctamente al servidor.");
                 } else {
-                    loader.hide();
+                    loader.close();
                     alert('Error:\n' +
                         ((e.error && e.message) || JSON.stringify(e)));
                 }
@@ -126,10 +126,10 @@ buscarImagen()
 
 function buscarImagen() {
     var photoID = Ti.App.Properties.getString('photoID');
-    loader.show();
+    loader.open();
     if (!Titanium.Network.online) {
         imageViewImagen.image = image1.read();
-        activityIndicator.hide();
+        loader.close();
         alert('No tienes conexion a internet');
         Ti.API.info("No tienes conexion a internet");
     } else {
@@ -140,11 +140,11 @@ function buscarImagen() {
             if (e.success) {
                     var photo = e.photos[0];
                     imageViewImagen.image = photo.urls.original;
-                    loader.hide();
+                    loader.close();
                     alert('Imagen descargada desde el servidor.');
 
             } else {
-                loader.hide();
+                loader.close();
                 alert('Error:\n' +
                     ((e.error && e.message) || JSON.stringify(e)));
             }

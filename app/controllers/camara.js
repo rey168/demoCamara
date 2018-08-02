@@ -1,7 +1,7 @@
 var args = $.args;
 var Cloud = require('ti.cloud');
 var image1 = Ti.Filesystem.getFile(Ti.Filesystem.applicationDataDirectory, 'imagen.jpg');
-var loader = Alloy.Globals.cargarLoader;
+//var loader = Alloy.Globals.cargarLoader;
 
 var imageViewImagen = Ti.UI.createImageView({
     width: "200",
@@ -32,7 +32,7 @@ function camaraFoto() {
         autohide: false, //Important!
 
         success: function(event) {
-          loader.open();
+          //loader.open();
             imageViewImagen.image = event.media;
             // Create the file in the application directory
             var imageSave = Ti.Filesystem.getFile(Ti.Filesystem.applicationDataDirectory, 'imagen.jpg');
@@ -44,10 +44,10 @@ function camaraFoto() {
                 if (e.success) {
                     var photo = e.photos[0];
                     Ti.App.Properties.setString('photoID', photo.id);
-                    loader.close();
+                    //loader.close();
                     alert("Imagen se subió correctamente al servidor.");
                 } else {
-                    loader.close();
+                    //loader.close();
                     alert('Error:\n' +
                         ((e.error && e.message) || JSON.stringify(e)));
                 }

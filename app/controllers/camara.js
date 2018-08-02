@@ -126,10 +126,10 @@ buscarImagen()
 
 function buscarImagen() {
     var photoID = Ti.App.Properties.getString('photoID');
-    loader.open();
+    //loader.open();
     if (!Titanium.Network.online) {
         imageViewImagen.image = image1.read();
-        loader.close();
+        //loader.close();
         alert('No tienes conexion a internet');
         Ti.API.info("No tienes conexion a internet");
     } else {
@@ -140,11 +140,11 @@ function buscarImagen() {
             if (e.success) {
                     var photo = e.photos[0];
                     imageViewImagen.image = photo.urls.original;
-                    loader.close();
+                    //loader.close();
                     alert('Imagen descargada desde el servidor.');
 
             } else {
-                loader.close();
+                //loader.close();
                 alert('Error:\n' +
                     ((e.error && e.message) || JSON.stringify(e)));
             }
